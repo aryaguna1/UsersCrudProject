@@ -16,11 +16,11 @@ public interface ApiInterface {
     Call<GetUser>getUser();
     @FormUrlEncoded
     @POST("users")
-    Call<PostPutDelUser>postUser(@Field("name") String name, @Field("job") String job);
+    Call<PostPutDelUser>postUser(@Field("first_name") String first_name, @Field("last_name") String last_name, @Field("email") String job);
 
     @FormUrlEncoded
     @PUT("users")
-    Call<PostPutDelUser>putUser(@Field("name") String name, @Field("job") String job);
+    Call<PostPutDelUser>putUser(@Field("first_name") String name, @Field("last_name") String last_name, @Field("email") String job);
 
     @FormUrlEncoded
     @HTTP(method = "DELETE", path = "users", hasBody = true)

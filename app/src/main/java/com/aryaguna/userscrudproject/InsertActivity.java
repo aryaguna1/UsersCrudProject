@@ -17,7 +17,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class InsertActivity extends AppCompatActivity {
-    EditText editName, editEmail;
+    EditText editFirstName, editLastName ,editEmail;
     Button btnInsert, btnBack;
     ApiInterface mApiInterface;
 
@@ -25,14 +25,15 @@ public class InsertActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_insert);
-        editName = (EditText) findViewById(R.id.editNama);
+        editFirstName = (EditText) findViewById(R.id.editFirstName);
+        editLastName = (EditText) findViewById(R.id.editLastName);
         editEmail = (EditText) findViewById(R.id.editEmail);
         mApiInterface = ApiClient.getClient().create(ApiInterface.class);
         btnInsert = (Button) findViewById(R.id.btnInsert);
         btnInsert.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Call<PostPutDelUser> postUserCall = mApiInterface.postUser(editName.getText().toString(), editEmail.getText().toString());
+                Call<PostPutDelUser> postUserCall = mApiInterface.postUser(editLastName.getText().toString(), editFirstName.getText().toString(), editEmail.getText().toString());
                 postUserCall.enqueue(new Callback<PostPutDelUser>() {
                     @Override
                     public void onResponse(Call<PostPutDelUser> call, Response<PostPutDelUser> response) {

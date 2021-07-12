@@ -33,14 +33,16 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.MyViewHolder
     @Override
     public void onBindViewHolder(@NonNull UsersAdapter.MyViewHolder holder, int position) {
         holder.mTextViewId.setText("ID = "+mUserList.get(position).getId());
-        holder.mTextViewName.setText("Name = "+mUserList.get(position).getName());
+        holder.mTextViewFirstName.setText("FirstName = "+mUserList.get(position).getFirst_name());
+        holder.mTextViewLastName.setText("LastName = "+mUserList.get(position).getLast_name());
         holder.mTextViewEmail.setText("Email = "+mUserList.get(position).getEmail());
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent mIntent = new Intent(view.getContext(), EditActivity.class);
                 mIntent.putExtra("Id", mUserList.get(position).getId());
-                mIntent.putExtra("Name", mUserList.get(position).getName());
+                mIntent.putExtra("FirstName", mUserList.get(position).getFirst_name());
+                mIntent.putExtra("LastName", mUserList.get(position).getLast_name());
                 mIntent.putExtra("Email", mUserList.get(position).getEmail());
                 view.getContext().startActivity(mIntent);
             }
@@ -53,12 +55,13 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.MyViewHolder
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        public TextView mTextViewId, mTextViewName, mTextViewEmail;
+        public TextView mTextViewId, mTextViewFirstName, mTextViewLastName, mTextViewEmail;
 
         public MyViewHolder(View itemView){
             super(itemView);
             mTextViewId = (TextView) itemView.findViewById(R.id.tvId);
-            mTextViewName = (TextView) itemView.findViewById(R.id.tvName);
+            mTextViewFirstName = (TextView) itemView.findViewById(R.id.tvFirstName);
+            mTextViewLastName = (TextView) itemView.findViewById(R.id.tvLastName);
             mTextViewEmail = (TextView) itemView.findViewById(R.id.tvEmail);
         }
     }
